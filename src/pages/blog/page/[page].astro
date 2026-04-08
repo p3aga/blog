@@ -4,14 +4,14 @@ import { type CollectionEntry } from "astro:content";
 import SiteBase from "@/layouts/SiteBase.astro";
 import PostPreview from "@/components/blog/PostPreview.astro";
 import NotFoundPosts from "@/components/layout/NotFoundPosts.astro";
+import PageToggle from "@/components/layout/PageToggle.astro";
 import { getOrderedBlogPosts } from "@/utils/blog";
-
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const allPostsByDate = await getOrderedBlogPosts();
 
   return paginate(allPostsByDate, {
-    pageSize: 20,
+    pageSize: 10,
   });
 };
 
@@ -22,8 +22,8 @@ interface Props {
 const { page } = Astro.props;
 ---
 
-<SiteBase title={ `Blog pág ${page}` }>
-  <section>
+<SiteBase title={ `Blog pág ${page.currentPage}` }>
+  <section class={ `${page.currentPage > 1 && 'mb-10'}` }>
     <h1 class="text-3xl font-black">Posts</h1>
     <div>
       { page.data.length > 0 ? (
@@ -42,4 +42,5 @@ const { page } = Astro.props;
       }
     </div>
   </section>
+  <PageToggle page={ page } />
 </SiteBase>
