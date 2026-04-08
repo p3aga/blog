@@ -7,7 +7,7 @@
 
     & :where(*):not(.not-prose, .not-prose *) {
 
-      &:is(h1,h2,h3,h4,h5,h6) {
+      &:is(h1, h2, h3, h4, h5, h6) {
         margin-top: calc(var(--spacing) * 8);
         margin-bottom: calc(var(--spacing) * 4);
       }
@@ -16,18 +16,18 @@
         font-size: var(--text-2xl);
         font-weight: var(--font-weight-black);
       }
-      
+
       &:is(h3) {
         font-size: var(--text-xl);
         font-weight: var(--font-weight-bold);
       }
-      
+
       &:is(h4) {
         font-size: var(--text-lg);
         font-weight: var(--font-weight-bold);
       }
-      
-      &:is(h5,h6) {
+
+      &:is(h5, h6) {
         font-size: var(--text-base);
       }
 
@@ -56,7 +56,9 @@
       &:is(em, blockquote) {
         font-style: italic;
         font-family: var(--font-serif);
-      };
+      }
+
+      ;
 
       &:is(blockquote) {
         padding-inline-start: calc(var(--spacing) * 6);
@@ -67,12 +69,12 @@
         }
       }
 
-      &:is(ul,ol) {
+      &:is(ul, ol) {
         list-style-position: inside;
         margin-bottom: calc(var(--spacing) * 4);
         margin-inline-start: calc(var(--spacing) * 2);
 
-        & :is(ul,ol) {
+        & :is(ul, ol) {
           margin-bottom: 0;
           margin-inline-start: calc(var(--spacing) * 4);
         }
@@ -133,7 +135,7 @@
           border-collapse: separate;
           border-spacing: 0;
 
-          & :is(th,td) {
+          & :is(th, td) {
             border-bottom: 1px solid var(--prose-border-color);
             border-right: 1px solid var(--prose-border-color);
             padding: calc(var(--spacing) * 3) calc(var(--spacing) * 6);
@@ -145,7 +147,7 @@
             background-color: var(--prose-bg-soft-color);
           }
 
-          & :is(th,td):last-child {
+          & :is(th, td):last-child {
             border-right: none;
           }
 
@@ -164,7 +166,11 @@
         border: 1px solid var(--prose-border-color);
         border-radius: 4px;
         box-sizing: border-box;
-        white-space: nowrap;
+        white-space: normal;
+
+        @media (width >= 40rem) {
+          white-space: nowrap;
+        }
       }
 
       &:is(mark) {
