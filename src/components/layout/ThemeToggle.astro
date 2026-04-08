@@ -4,15 +4,49 @@ import { Icon } from "astro-icon/components";
 
 <button id="themeToggle" class="cursor-pointer" type="button">
   <span class="sr-only">Dark Theme</span>
-  <Icon name="ph:moon" class="text-3xl hidden dark:block"/>
-  <Icon name="ph:sun-dim" class="text-3xl block dark:hidden"/>
+  <Icon name="ph:monitor" class="text-3xl block" data-theme="system"/>
+  <Icon name="ph:moon" class="text-3xl hidden" data-theme="dark"/>
+  <Icon name="ph:sun-dim" class="text-3xl hidden" data-theme="light"/>
 </button>
 
 <script is:inline>
-  const handleToggleTheme = (() => {
-    document.documentElement.classList.toggle('dark');
-    const isDark = document.documentElement.classList.contains('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  const handleToggleThemeSVG = ((svgList, currentTheme) => {
+    svgList.forEach(svg => {
+      if (svg.dataset.theme == currentTheme) {
+        svg.classList.remove('hidden');
+        svg.classList.add('block');
+      } else {
+        svg.classList.remove('block');
+        svg.classList.add('hidden');
+      }
+    })
+  })
+  const handleToggleTheme = ((e) => {
+    themeToggle = e.currentTarget;
+
+    const themeToggleSVGs = themeToggle.querySelectorAll('svg');
+    const blockTheme = Array.from(themeToggleSVGs).filter(
+      el => getComputedStyle(el).display === 'block'
+    )[0];
+
+    switch (blockTheme.dataset.theme) {
+      case 'system':
+        document.documentElement.classList.add('dark')
+        localStorage.setItem('theme', 'dark')
+        handleToggleThemeSVG(themeToggleSVGs, 'dark')
+        break;
+      case 'dark':
+        document.documentElement.classList.remove('dark')
+        localStorage.setItem('theme', 'light')
+        handleToggleThemeSVG(themeToggleSVGs, 'light')
+        break;
+      default:
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.classList.add('dark')
+        }
+        localStorage.removeItem('theme')
+        handleToggleThemeSVG(themeToggleSVGs, 'system')
+    }
   })
 
   document.getElementById('themeToggle').addEventListener('click', handleToggleTheme);
