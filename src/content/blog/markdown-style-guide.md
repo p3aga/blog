@@ -44,7 +44,7 @@ You can use various formatting options like **bold**, _italic_, ~~strikethrough~
 
 To hide the caption, start it with an underscore `_` or leave the alt text empty.
 
-![HIKARI](@/assets/hikari.jpg)
+![HIKARI](@/assets/img/hikari.jpg)
 
 ## Tables
 
