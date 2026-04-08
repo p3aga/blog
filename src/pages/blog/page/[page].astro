@@ -3,6 +3,7 @@ import type { Page, GetStaticPaths } from "astro";
 import { type CollectionEntry } from "astro:content";
 import SiteBase from "@/layouts/SiteBase.astro";
 import PostPreview from "@/components/blog/PostPreview.astro";
+import NotFoundPosts from "@/components/layout/NotFoundPosts.astro";
 import { getOrderedBlogPosts } from "@/utils/blog";
 
 
@@ -25,16 +26,19 @@ const { page } = Astro.props;
   <section>
     <h1 class="text-3xl font-black">Posts</h1>
     <div>
-      {
-        page.data.map((post) => (
-          <PostPreview 
-            id={ post.id }
-            title={ post.data.title }
-            description={ post.data.description }
-            pubDate={ post.data.pubDate }
-            tags={ post.data.tags }
-          />
-        ))
+      { page.data.length > 0 ? (
+          page.data.map((post) => (
+            <PostPreview 
+              id={ post.id }
+              title={ post.data.title }
+              description={ post.data.description }
+              pubDate={ post.data.pubDate }
+              tags={ post.data.tags }
+            />
+          ))
+        ) : (
+          <NotFoundPosts />
+        )
       }
     </div>
   </section>

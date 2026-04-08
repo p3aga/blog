@@ -2,7 +2,7 @@ import { visit } from "unist-util-visit";
 
 
 export default function rehypeTableProcessor() {
-  return (tree) => {
+  return (tree: any) => {
     visit(tree, 'element', (node, index, parent) => {
       if (node.tagName !== 'table') return;
 
