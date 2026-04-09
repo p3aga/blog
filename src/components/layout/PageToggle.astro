@@ -7,12 +7,12 @@ const { page } = Astro.props;
 <div class={`flex ${page.currentPage > 1 ? 'justify-between' : 'justify-end'}`}>
   { page.currentPage > 1 && (
     <a href={ page.url.prev } class="flex items-center justify-start font-bold">
-      <Icon name="ph:arrow-left-bold" class="me-1" /> Anterior
+      <Icon name="material-symbols-light:arrow-back-2-rounded" class="me-1" /> Anterior
     </a>
   )}
   { page.currentPage < page.lastPage && (
     <a href={ page.url.next } class="flex items-center justify-end font-bold">
-      Próxima <Icon name="ph:arrow-right-bold" class="ms-1" />
+      Próxima <Icon name="material-symbols-light:play-arrow-rounded" class="ms-1" />
     </a>
   )}
 </div>
