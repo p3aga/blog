@@ -21,10 +21,13 @@ import { Icon } from "astro-icon/components";
       }
     })
   })
+  
+  const themeToggleSVGs = themeToggle.querySelectorAll('svg');
+  handleToggleThemeSVG(themeToggleSVGs, localStorage.getItem('theme') || 'system')
+
   const handleToggleTheme = ((e) => {
     themeToggle = e.currentTarget;
-
-    const themeToggleSVGs = themeToggle.querySelectorAll('svg');
+    
     const blockTheme = Array.from(themeToggleSVGs).filter(
       el => getComputedStyle(el).display === 'block'
     )[0];
