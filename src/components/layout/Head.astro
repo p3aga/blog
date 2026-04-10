@@ -19,3 +19,8 @@ const titleFormated = `${title} | ${siteConfig.SiteName}`
 <meta name="generator" content={Astro.generator} />
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+{!import.meta.env.DEV && (
+  <link href="/pagefind/pagefind-component-ui.css" rel="stylesheet">
+  <script src="/pagefind/pagefind-component-ui.js" is:inline></script>
+)}

@@ -6,15 +6,18 @@
     "dev": "astro dev",
     "dev:host": "astro dev --host",
     "build": "astro build",
+    "postbuild": "pagefind --site dist",
     "preview": "astro preview",
     "check": "astro check"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
     "@iconify-json/material-symbols-light": "^1.2.65",
+    "@pagefind/component-ui": "^1.5.0",
     "astro": "^6.1.4",
     "astro-expressive-code": "^0.41.6",
     "astro-icon": "^1.1.5",
+    "pagefind": "^1.5.0",
     "remark-directive": "^4.0.0",
     "unist-util-visit": "^5.1.0"
   },

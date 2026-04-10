@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components"
+---
+
+<button type="button" id="search" class="flex items-center cursor-pointer">
+  <Icon name="material-symbols-light:search" class="text-3xl"/>
+</button>
+
+{!import.meta.env.DEV ? (
+  <pagefind-modal></pagefind-modal>
+
+  <script is:inline>
+    const manager = window.PagefindComponents.getInstanceManager();
+    const instance = manager.getInstance("default");
+    // @ts-ignore
+    const btnSearch = document.getElementById("search");
+
+    btnSearch.addEventListener("click", () => {
+      const modals = instance.getUtilities("modal");
+      const modal = modals[0];
+      modal.open();
+    });
+  </script>
+) : (
+  <script is:inline>
+    // @ts-ignore
+    const btnSearch = document.getElementById("search");
+    btnSearch.addEventListener("click", () => {
+      alert("Pesquisa desabilitada no modo de desenvolvimento.");
+    });
+  </script>
+)}
+

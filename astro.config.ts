@@ -15,7 +15,7 @@ import rehypeTableProcessor from './src/plugins/rehype-table-processor';
 export default defineConfig({
   site: siteConfig.Url,
   base: '/',
-  trailingSlash: 'never',
+  trailingSlash: 'ignore',
   integrations: [
     astroExpressiveCode({
       themes: ['gruvbox-dark-medium'],
