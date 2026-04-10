@@ -3,6 +3,20 @@
 @import "tailwindcss";
 @import "./prose.css";
 
+:root {
+  --pf-text: var(--color-green-900);
+  --pf-text-secondary: oklch(from var(--color-green-900) l c h / 0.5);
+  --pf-background: var(--color-green-50);
+  --pf-border: oklch(from var(--color-green-900) l c h / 0.2);
+  --pf-border-focus: var(--color-green-900);
+  --pf-hover: var(--color-green-50);
+  --pf-mark: var(--color-green-900);
+
+  --pf-font: "Inter", sans-serif;
+
+  --pf-outline-focus: var(--color-green-900);
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
