@@ -20,6 +20,18 @@
   --pf-outline-focus: var(--color-green-900);
 }
 
+:root.dark {
+  --pf-text: var(--color-green-50);
+  --pf-text-secondary: oklch(from var(--color-green-50) l c h / 0.5);
+  --pf-background: var(--color-green-950);
+  --pf-border: oklch(from var(--color-green-50) l c h / 0.2);
+  --pf-border-focus: var(--color-green-50);
+  --pf-hover: var(--color-green-950);
+  --pf-mark: var(--color-green-50);
+
+  --pf-outline-focus: var(--color-green-50);
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
