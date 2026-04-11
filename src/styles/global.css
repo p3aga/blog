@@ -6,9 +6,12 @@
 :root {
   --pf-text: var(--color-green-900);
   --pf-text-secondary: oklch(from var(--color-green-900) l c h / 0.5);
+  --pf-text-muted: var(--pf-text-secondary);
   --pf-background: var(--color-green-50);
   --pf-border: oklch(from var(--color-green-900) l c h / 0.2);
   --pf-border-focus: var(--color-green-900);
+  --pf-skeleton: none;
+  --pf-skeleton-shine: none;
   --pf-hover: var(--color-green-50);
   --pf-mark: var(--color-green-900);
 
