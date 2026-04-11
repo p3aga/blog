@@ -7,7 +7,7 @@ import { Icon } from "astro-icon/components"
 </button>
 
 {!import.meta.env.DEV ? (
-  <pagefind-modal></pagefind-modal>
+  <pagefind-modal reset-on-close="true"></pagefind-modal>
 
   <script is:inline>
     const manager = window.PagefindComponents.getInstanceManager();
