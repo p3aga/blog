@@ -1,4 +1,4 @@
-@layer componets {
+@layer components {
   .prose {
     --prose-base-color: var(--color-green-900);
     --prose-border-color: oklch(from var(--prose-base-color) l c h / 0.3);

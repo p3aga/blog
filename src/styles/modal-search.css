@@ -1,0 +1,30 @@
+@layer components {
+  .modal-search {
+    --pf-text: var(--color-green-900);
+    --pf-text-secondary: oklch(from var(--color-green-900) l c h / 0.5);
+    --pf-text-muted: var(--pf-text-secondary);
+    --pf-background: var(--color-green-50);
+    --pf-border: oklch(from var(--color-green-900) l c h / 0.2);
+    --pf-border-focus: var(--color-green-900);
+    --pf-skeleton: none;
+    --pf-skeleton-shine: none;
+    --pf-hover: var(--color-green-50);
+    --pf-mark: var(--color-green-900);
+
+    --pf-font: "Inter", sans-serif;
+
+    --pf-outline-focus: var(--color-green-900);
+  }
+
+  :where(.dark) .modal-search {
+    --pf-text: var(--color-mist-50);
+    --pf-text-secondary: oklch(from var(--color-mist-50) l c h / 0.5);
+    --pf-background: var(--color-mist-800);
+    --pf-border: oklch(from var(--color-mist-50) l c h / 0.2);
+    --pf-border-focus: var(--color-mist-50);
+    --pf-hover: var(--color-mist-800);
+    --pf-mark: var(--color-mist-50);
+
+    --pf-outline-focus: var(--color-mist-50);
+  }
+}
