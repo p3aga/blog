@@ -2,6 +2,7 @@
 
 @import "tailwindcss";
 @import "./prose.css";
+@import "./modal-search.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
