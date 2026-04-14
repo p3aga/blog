@@ -1,7 +1,7 @@
 ---
 import ThemeToggle from "@/components/layout/ThemeToggle.astro";
 import Search from "./Search.astro";
-import { menuLinks, siteConfig } from "@/site.config";
+import siteConfig  from "@/site.config";
 ---
 
 <header>
@@ -19,7 +19,7 @@ import { menuLinks, siteConfig } from "@/site.config";
     </div>
     <nav class="divide-x -ms-3 mt-2 divide-dashed font-serif">
       {
-        menuLinks.map(link => (
+        siteConfig.menuLinks.map(link => (
           <a href={link.path} class="text-xl px-3 box-border font-semibold">{link.title}</a>
         ))
       }

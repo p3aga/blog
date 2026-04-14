@@ -2,6 +2,7 @@
 import PostPreview from "@/components/blog/PostPreview.astro";
 import NotFoundPosts from "@/components/layout/NotFoundPosts.astro";
 import SiteBase from "@/layouts/SiteBase.astro";
+import siteConfig from "@/site.config";
 import { getOrderedBlogPosts } from "@/utils/blog";
 import { Icon } from "astro-icon/components";
 
@@ -18,19 +19,12 @@ const postsFiltereded = allPostsByDate.slice(0, 5)
       <p class="mt-3">Meu nome é Pedro Henrick, um desenvolvedor com paixão por open source e self hosting.</p>
       <p class="mt-1"></p>
       <p class="flex items-center gap-3 mt-4">
-        <span>Me encontre em:</span> 
-        <a href="https://linkedin.com/in/p3aga" target="_blank">
-          <Icon name="simple-icons:linkedin" class="text-xl"/>
-        </a>
-        <a href="https://github.com/p3aga" target="_blank">
-          <Icon name="simple-icons:github" class="text-xl"/>
-        </a>
-        <a href="https://codeberg.org/p3aga" target="_blank">
-          <Icon name="simple-icons:codeberg" class="text-xl"/>
-        </a>
-        <a href="mailto:pedrohenrickqa@gmail.com" target="_blank">
-          <Icon name="simple-icons:maildotru" class="text-xl"/>
-        </a>
+        <span>Me encontre em:</span>
+        {siteConfig.UserLinks.map((link) => (
+          <a href={link.url} target="_blank">
+            <Icon name={`simple-icons:${link.icon}`} class="text-xl"/>
+          </a>
+        ))}
       </p>
     </div>
   </section>
