@@ -1,6 +1,7 @@
 ---
 import ThemeToggle from "@/components/layout/ThemeToggle.astro";
 import Search from "./Search.astro";
+import RssBtn from "./RssBtn.astro";
 import { menuLinks, siteConfig } from "@/site.config";
 ---
 
@@ -9,8 +10,9 @@ import { menuLinks, siteConfig } from "@/site.config";
     <div class="flex justify-between items-center">
       <a href="/" class="text-5xl font-title font-black">{siteConfig.SiteName}</a>
       <div class="flex gap-2">
-        <Search />
-        <ThemeToggle />
+        <div><Search /></div>
+        <div><ThemeToggle /></div>
+        <div><RssBtn /></div>
       </div>
     </div>
     <nav class="divide-x -ms-3 mt-2 divide-dashed font-serif">
