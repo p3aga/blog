@@ -1,5 +1,6 @@
 const siteConfig = ({
-  Url: 'https://ipedrohenrick.dev.br',
+  Url: 'https://localhost:4321',
+  Base: "/",
   Lang: "pt-BR",
   SiteName: "P3AGA",
   Description: "Pedro Henrick personal portfolio/blog :)",
