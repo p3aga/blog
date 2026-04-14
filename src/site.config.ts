@@ -1,6 +1,4 @@
 const siteConfig = ({
-  Url: import.meta.env.APP_URL || 'http://localhost:4321',
-  BaseUrl: import.meta.env.BASE_URL || '/',
   Lang: "pt-BR",
   SiteName: "P3AGA",
   Description: "Pedro Henrick personal portfolio/blog :)",

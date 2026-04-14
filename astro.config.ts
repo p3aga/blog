@@ -14,8 +14,8 @@ import rehypeTableProcessor from './src/plugins/rehype-table-processor';
 
 // https://astro.build/config
 export default defineConfig({
-  site: siteConfig.Url,
-  base: siteConfig.BaseUrl,
+  site: 'https://p3aga.github.io',
+  base: '/blog',
   trailingSlash: 'ignore',
   integrations: [
     astroExpressiveCode({
