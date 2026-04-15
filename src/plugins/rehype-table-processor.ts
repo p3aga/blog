@@ -1,12 +1,13 @@
+import type { Element, Parent, Root } from "hast";
 import { visit } from "unist-util-visit";
 
 
 export default function rehypeTableProcessor() {
-  return (tree: any) => {
-    visit(tree, 'element', (node, index, parent) => {
+  return (tree: Root) => {
+    visit(tree, "element", (node: Element, index: number | undefined, parent: Parent | undefined) => {
       if (node.tagName !== 'table') return;
 
-      const tableWrapper = {
+      const tableWrapper: Element = {
         type: 'element',
         tagName: 'div',
         properties: {
