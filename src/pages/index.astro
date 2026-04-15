@@ -1,13 +1,13 @@
 ---
-import PostPreview from "@/components/blog/PostPreview.astro";
-import NotFoundPosts from "@/components/layout/NotFoundPosts.astro";
-import SiteBase from "@/layouts/SiteBase.astro";
-import siteConfig from "@/site.config";
-import { getOrderedBlogPosts } from "@/utils/blog";
-import { Icon } from "astro-icon/components";
+import PostPreview from '@/components/blog/PostPreview.astro';
+import NotFoundPosts from '@/components/layout/NotFoundPosts.astro';
+import SiteBase from '@/layouts/SiteBase.astro';
+import siteConfig from '@/site.config';
+import { getOrderedBlogPosts } from '@/utils/blog';
+import { Icon } from 'astro-icon/components';
 
 const allPostsByDate = await getOrderedBlogPosts();
-const postsFiltereded = allPostsByDate.slice(0, 5)
+const postsFiltereded = allPostsByDate.slice(0, 5);
 ---
 
 <SiteBase title="Home">

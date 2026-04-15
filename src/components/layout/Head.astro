@@ -1,13 +1,12 @@
 ---
 import siteConfig from '@/site.config';
 
-
 interface Props {
-  title: string
+  title: string;
 }
 
 const { title } = Astro.props;
-const titleFormated = `${title} | ${siteConfig.SiteName}`
+const titleFormated = `${title} | ${siteConfig.SiteName}`;
 ---
 
 <meta charset="utf-8" />

@@ -1,12 +1,12 @@
 ---
-import PostDate from "@/components/blog/PostDate.astro";
+import PostDate from '@/components/blog/PostDate.astro';
 
 interface Props {
-  id: string,
-  title: string,
-  description: string,
-  pubDate: Date,
-  tags: string[],
+  id: string;
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags: string[];
 }
 
 const { id, title, description, pubDate, tags } = Astro.props;
