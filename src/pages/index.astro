@@ -1,7 +1,6 @@
 ---
 import PostPreview from "@/components/blog/PostPreview.astro";
 import NotFoundPosts from "@/components/layout/NotFoundPosts.astro";
-import BackToTop from "@/components/layout/BackToTop.astro";
 import SiteBase from "@/layouts/SiteBase.astro";
 import siteConfig from "@/site.config";
 import { getOrderedBlogPosts } from "@/utils/blog";
@@ -48,6 +47,4 @@ const postsFiltereded = allPostsByDate.slice(0, 5)
       }
     </div>
   </section>
-
-  <BackToTop />
 </SiteBase>
