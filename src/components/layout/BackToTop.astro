@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div data-back-to-top class="fixed bottom-6 right-6 z-50 hidden">
+  <button
+    type="button"
+    aria-label="Voltar ao topo"
+    class="flex items-center justify-center rounded-full bg-green-900 p-3 text-green-50 shadow-lg transition-opacity duration-200 hover:opacity-80 dark:bg-green-50 dark:text-green-900"
+  >
+    <Icon name="material-symbols-light:arrow-upward" class="text-3xl" />
+  </button>
+</div>
+
+<script is:inline>
+  const backToTopContainer = document.querySelector('[data-back-to-top]');
+
+  const toggleBackToTop = () => {
+    if (!backToTopContainer) return;
+    if (window.scrollY > 150) {
+      backToTopContainer.classList.remove('hidden');
+    } else {
+      backToTopContainer.classList.add('hidden');
+    }
+  };
+
+  backToTopContainer?.querySelector('button')?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  window.addEventListener('scroll', toggleBackToTop);
+  toggleBackToTop();
+</script>
