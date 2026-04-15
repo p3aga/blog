@@ -11,8 +11,8 @@ const siteConfig = ({
     { icon: "maildotru", url: "mailto:pedrohenrickqa@gmail.com" }
   ],
   menuLinks: [
-    { path: "/blog", title: "Blog" },
-    { path: "/about", title: "Sobre" },
+    { path: "blog", title: "Blog" },
+    { path: "about", title: "Sobre" },
   ]
 })
 
