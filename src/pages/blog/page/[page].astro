@@ -24,7 +24,7 @@ const { page } = Astro.props;
 
 <SiteBase title={ `Blog pág ${page.currentPage}` }>
   <section class={ `${page.currentPage > 1 && 'mb-10'}` }>
-    <h1 class="text-3xl font-black">Posts</h1>
+    <h1 class="text-2xl font-bold">Posts</h1>
     <div>
       { page.data.length > 0 ? (
           page.data.map((post) => (

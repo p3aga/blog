@@ -15,14 +15,13 @@ const postsFiltereded = allPostsByDate.slice(0, 5)
     <h1 class="sr-only">Pedro Henrick Queiroz Alves</h1>
 
     <div class="text-justify">
-      <h2 class="text-lg font-bold">Olá!</h2>
+      <h2 class="text-xl font-serif font-bold">Olá!</h2>
       <p class="mt-3">Meu nome é Pedro Henrick, um desenvolvedor com paixão por open source e self hosting.</p>
-      <p class="mt-1"></p>
       <p class="flex items-center gap-3 mt-4">
         <span>Me encontre em:</span>
         {siteConfig.UserLinks.map((link) => (
           <a href={link.url} target="_blank">
-            <Icon name={`simple-icons:${link.icon}`} class="text-xl"/>
+            <Icon name={`simple-icons:${link.icon}`} class="text-lg"/>
           </a>
         ))}
       </p>
@@ -30,7 +29,7 @@ const postsFiltereded = allPostsByDate.slice(0, 5)
   </section>
 
   <section class="mt-10">
-    <h2 class="text-2xl font-black">Posts recentes</h2>
+    <h2 class="text-xl font-serif font-bold">Posts recentes</h2>
     <div>
       { postsFiltereded.length > 0 ? (
           postsFiltereded.map((post) => (
