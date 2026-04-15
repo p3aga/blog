@@ -7,7 +7,7 @@ const blog = defineCollection({
     base: './src/content/blog',
     pattern: import.meta.env.DEV
       ? '**/*.{md,mdx}'
-      : ['**/*.{md,mdx}', '!**/_*.md'],
+      : ['**/*.{md,mdx}', '!**/_*.{md,mdx}'],
   }),
   schema: z.object({
     title: z.string().max(30),
