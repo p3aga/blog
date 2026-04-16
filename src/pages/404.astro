@@ -1,17 +1,11 @@
 ---
-import Base from '@/layouts/Base.astro';
+import SiteBase from '@/layouts/SiteBase.astro';
 import { Icon } from 'astro-icon/components';
 ---
 
-<Base title="404">
-  <main class="grid h-screen place-items-center relative">
-    <div class="text-center">
-      <h1 class="text-5xl font-title font-black">404</h1> 
-      <p class="mt-4 font-serif font-medium">página não encontrada.</p>
-    </div>
-    <a href={`${import.meta.env.BASE_URL}`} class="flex items-center font-semibold absolute bottom-15"> 
-      <Icon name="material-symbols-light:arrow-back-2-rounded" class="inline me-1" />
-      Voltar para Home
-    </a>
-  </main>
-</Base>
+<SiteBase title="404">
+  <div class="flex flex-col items-center my-30">
+    <Icon name="fluent-emoji-high-contrast:face-with-monocle" class="text-5xl"/>
+    <span class="text-sm font-serif mt-4">O que você está procurando? (404)</span>
+  </div>
+</SiteBase>
