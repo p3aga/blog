@@ -1,5 +1,5 @@
 ---
-import Icon from 'astro-icon/components';
+import { Icon } from 'astro-icon/components';
 ---
 
 <button type="button" id="search" class="flex items-center cursor-pointer">
@@ -17,19 +17,19 @@ import Icon from 'astro-icon/components';
 
   if (!import.meta.env.DEV) {
     const manager = window.PagefindComponents.getInstanceManager();
-    const instance = manager.getInstance("default");
-    btnSearch = document.getElementById("search");
+    const instance = manager.getInstance('default');
+    btnSearch = document.getElementById('search');
 
-    btnSearch.addEventListener("click", () => {
-      const modals = instance.getUtilities("modal");
+    btnSearch.addEventListener('click', () => {
+      const modals = instance.getUtilities('modal');
       const modal = modals[0];
       modal.open();
     });
   }
   else {
-    btnSearch = document.getElementById("search");
-    btnSearch.addEventListener("click", () => {
-      alert("Pesquisa desabilitada no modo de desenvolvimento.");
+    btnSearch = document.getElementById('search');
+    btnSearch.addEventListener('click', () => {
+      alert('Pesquisa desabilitada no modo de desenvolvimento.');
     });
   }
 </script>

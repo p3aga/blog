@@ -6,12 +6,12 @@ interface Props {
 }
 
 const { title } = Astro.props;
-const titleFormated = `${title} | ${siteConfig.SiteName}`;
+const titleFormatted = `${title} | ${siteConfig.SiteName}`;
 ---
 
 <meta charset="utf-8" />
 <link rel="sitemap" href={`${import.meta.env.BASE_URL}sitemap-index.xml`}>
-<title>{titleFormated}</title>
+<title>{titleFormatted}</title>
 <meta name="description" content={siteConfig.Description}>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
