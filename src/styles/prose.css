@@ -6,7 +6,6 @@
     --prose-bg-soft-color: oklch(from var(--prose-base-color) l c h / 0.1);
 
     & :where(*):not(.not-prose, .not-prose *) {
-
       &:is(h1, h2, h3, h4, h5, h6) {
         font-family: var(--font-serif);
         margin-top: calc(var(--spacing) * 12);
@@ -46,8 +45,6 @@
         font-style: italic;
         font-family: var(--font-serif);
       }
-
-      ;
 
       &:is(blockquote) {
         padding-inline-start: calc(var(--spacing) * 6);
@@ -163,7 +160,11 @@
       }
 
       &:is(mark) {
-        background-color: color-mix(in oklch, var(--prose-base-color), transparent 80%);
+        background-color: color-mix(
+          in oklch,
+          var(--prose-base-color),
+          transparent 80%
+        );
         color: var(--prose-base-color);
         padding-inline: var(--spacing);
         font-weight: bold;

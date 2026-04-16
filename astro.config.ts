@@ -1,16 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import { type AstroUserConfig } from 'astro';
+import type { AstroUserConfig } from 'astro';
 
 import mdx from '@astrojs/mdx';
 import icon from 'astro-icon';
-import tailwindcss from '@tailwindcss/vite'; 
+import tailwindcss from '@tailwindcss/vite';
 import astroExpressiveCode from 'astro-expressive-code';
 
-import siteConfig from './src/site.config';
 import remarkDirective from 'remark-directive';
 import rehypeTableProcessor from './src/plugins/rehype-table-processor';
-
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,25 +23,21 @@ export default defineConfig({
         uiFontFamily: 'var(--font-sans), sans-serif',
         codeFontFamily: 'var(--font-mono), monospace',
         frames: {
-          frameBoxShadowCssValue: "none",
+          frameBoxShadowCssValue: 'none',
         },
-      }
+      },
     }),
     mdx(),
     icon(),
   ],
   markdown: {
-    remarkPlugins: [
-      remarkDirective,
-    ],
-    rehypePlugins: [
-      rehypeTableProcessor,
-    ],
+    remarkPlugins: [remarkDirective],
+    rehypePlugins: [rehypeTableProcessor],
   },
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
   devToolbar: {
     enabled: false,
   },
-}) as AstroUserConfig;;
+}) as AstroUserConfig;
