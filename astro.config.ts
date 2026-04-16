@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 import type { AstroUserConfig } from 'astro';
 
-import mdx from '@astrojs/mdx';
 import icon from 'astro-icon';
 import tailwindcss from '@tailwindcss/vite';
 import astroExpressiveCode from 'astro-expressive-code';
@@ -10,26 +9,24 @@ import astroExpressiveCode from 'astro-expressive-code';
 import remarkDirective from 'remark-directive';
 import rehypeTableProcessor from './src/plugins/rehype-table-processor';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://p3aga.is-a.dev',
   base: '/',
   trailingSlash: 'ignore',
-  integrations: [
-    astroExpressiveCode({
-      themes: ['gruvbox-dark-medium'],
-      styleOverrides: {
-        borderRadius: '4px',
-        uiFontFamily: 'var(--font-sans), sans-serif',
-        codeFontFamily: 'var(--font-mono), monospace',
-        frames: {
-          frameBoxShadowCssValue: 'none',
-        },
+  integrations: [astroExpressiveCode({
+    themes: ['gruvbox-dark-medium'],
+    styleOverrides: {
+      borderRadius: '4px',
+      uiFontFamily: 'var(--font-sans), sans-serif',
+      codeFontFamily: 'var(--font-mono), monospace',
+      frames: {
+        frameBoxShadowCssValue: 'none',
       },
-    }),
-    mdx(),
-    icon(),
-  ],
+    },
+  }), icon(), sitemap()],
   markdown: {
     remarkPlugins: [remarkDirective],
     rehypePlugins: [rehypeTableProcessor],
