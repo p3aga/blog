@@ -1,6 +1,5 @@
 ---
 import PostPreview from '@/components/blog/PostPreview.astro';
-import NotFoundPosts from '@/components/layout/NotFoundPosts.astro';
 import SiteBase from '@/layouts/SiteBase.astro';
 import siteConfig from '@/site.config';
 import { getOrderedBlogPosts } from '@/utils/blog';
@@ -28,23 +27,12 @@ const postsFiltered = allPostsByDate.slice(0, 5);
     </div>
   </section>
 
-  <section class="mt-10">
-    <h2 class="text-xl font-serif font-bold">Posts recentes</h2>
-    <div>
-      { postsFiltered.length > 0 ? (
-          postsFiltered.map((post) => (
-            <PostPreview 
-              id={ post.id }
-              title={ post.data.title }
-              description={ post.data.description }
-              pubDate={ post.data.pubDate }
-              tags={ post.data.tags }
-            />
-          ))
-        ) : (
-          <NotFoundPosts />
-        )
-      }
-    </div>
-  </section>
+  { postsFiltered.length > 0 && (
+    <section class="mt-10">
+      <h2 class="text-xl font-serif font-bold">Posts recentes</h2>
+      <div>
+        {postsFiltered.map((post) => <PostPreview post={post} />)}
+      </div>
+    </section>
+  )}
 </SiteBase>

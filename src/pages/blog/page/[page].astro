@@ -3,7 +3,7 @@ import type { Page, GetStaticPaths } from 'astro';
 import { type CollectionEntry } from 'astro:content';
 import SiteBase from '@/layouts/SiteBase.astro';
 import PostPreview from '@/components/blog/PostPreview.astro';
-import NotFoundPosts from '@/components/layout/NotFoundPosts.astro';
+import NoData from '@/components/layout/NoData.astro';
 import PageToggle from '@/components/layout/PageToggle.astro';
 import { getOrderedBlogPosts } from '@/utils/blog';
 
@@ -23,24 +23,17 @@ const { page } = Astro.props;
 ---
 
 <SiteBase title={ `Blog pág ${page.currentPage}` }>
-  <section class={ `${page.currentPage > 1 && 'mb-10'}` }>
-    <h1 class="text-2xl font-bold">Posts</h1>
-    <div>
-      { page.data.length > 0 ? (
-          page.data.map((post) => (
-            <PostPreview 
-              id={ post.id }
-              title={ post.data.title }
-              description={ post.data.description }
-              pubDate={ post.data.pubDate }
-              tags={ post.data.tags }
-            />
-          ))
-        ) : (
-          <NotFoundPosts />
-        )
-      }
-    </div>
-  </section>
-  <PageToggle page={ page } />
+  { page.data.length > 0 ? (
+    <section class={ `${page.url.prev && 'mb-10'}` }>
+      <h1 class="text-2xl font-bold">Posts</h1>
+      <div>
+        {page.data.map((post) => <PostPreview post={post} />)}
+      </div>
+    </section>
+    <PageToggle page={ page } />
+  ) : (
+    <section>
+      <NoData />
+    </section>
+  )}
 </SiteBase>

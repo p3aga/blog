@@ -12,10 +12,10 @@ import { Icon } from 'astro-icon/components';
   <pagefind-modal reset-on-close="true" class="modal-search"></pagefind-modal>
 )}
 
-<script is:inline>
+<script is:inline define:vars={{ isDev: import.meta.env.DEV }}>
   let btnSearch;
 
-  if (!import.meta.env.DEV) {
+  if (!isDev) {
     const manager = window.PagefindComponents.getInstanceManager();
     const instance = manager.getInstance('default');
     btnSearch = document.getElementById('search');

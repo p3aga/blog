@@ -1,35 +1,34 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import PostDate from '@/components/blog/PostDate.astro';
 
 interface Props {
-  id: string;
-  title: string;
-  description: string;
-  pubDate: Date;
-  tags: string[];
+  post: CollectionEntry<'blog'>;
 }
 
-const { id, title, description, pubDate, tags } = Astro.props;
+const { post } = Astro.props;
 ---
 
 <article class="@container/post-preview my-5">
-  <a href={`${import.meta.env.BASE_URL}blog/${id}`} class="transition-opacity duration-200 hover:opacity-80">
+  <a href={`${import.meta.env.BASE_URL}blog/${post.id}`} class="transition-opacity duration-200 hover:opacity-80">
     <div class="@md/post-preview:flex @md/post-preview:items-center @md/post-preview:gap-4">
-      <h3 class="text-base font-semibold whitespace-nowrap text-ellipsis overflow-hidden">{ title }</h3>
+      <h3 class="text-base font-semibold whitespace-nowrap text-ellipsis overflow-hidden">
+        { post.data.title } {post.data.draft && "(Rascunho)"}
+      </h3>
       <div class="flex-1 border-t opacity-30 @max-md/post-preview:hidden"></div>
       <div class="@max-md/post-preview:hidden">
-        <PostDate pubDate={ pubDate } />
+        <PostDate pubDate={ post.data.pubDate } />
       </div>
     </div>
     <div class="text-sm font-medium opacity-50">
-      <em>{ description }</em>
+      <em>{ post.data.description }</em>
     </div>
     <div class="whitespace-nowrap text-ellipsis overflow-hidden">
       <div class="hidden me-1 after:content-['-'] after:opacity-50 @max-md/post-preview:inline">
-        <PostDate pubDate={ pubDate } />
+        <PostDate pubDate={ post.data.pubDate } />
       </div>
       {
-        tags.map(tag => (
+        post.data.tags.map(tag => (
           <span class="text-sm me-1 font-medium inline">#{ tag }</span>
         ))
       }
