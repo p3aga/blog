@@ -17,11 +17,15 @@ const titleFormatted = `${title} | ${siteConfig.SiteName}`;
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
 
-<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
-
 <meta name="google-site-verification" content="SAlvHmPXZse2elMazKWpNizsKNZbHxZR4tqL8Sq8jDg" />
 
+<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
 {!import.meta.env.DEV && (
-  <link href={`${import.meta.env.BASE_URL}pagefind/pagefind-component-ui.css`} rel="stylesheet">
-  <script src={`${import.meta.env.BASE_URL}pagefind/pagefind-component-ui.js`} is:inline></script>
+  <link href={`${import.meta.env.BASE_URL}pagefind/pagefind-component-ui.css`} rel="stylesheet" rel="preload">
+  <script src={`${import.meta.env.BASE_URL}pagefind/pagefind-component-ui.js`} is:inline defer></script>
 )}
