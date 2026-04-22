@@ -19,7 +19,7 @@ const postsFiltered = allPostsByDate.slice(0, 5);
       <p class="flex items-center gap-3 mt-4">
         <span>Me encontre em:</span>
         {siteConfig.UserLinks.map((link) => (
-          <a href={link.url} target="_blank">
+          <a href={link.url} target="_blank" aria-label={link.alt}>
             <Icon name={`simple-icons:${link.icon}`} class="text-lg"/>
           </a>
         ))}
