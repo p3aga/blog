@@ -12,6 +12,7 @@ const siteConfig = {
   ],
   menuLinks: [
     { path: 'blog', title: 'Blog' },
+    { path: 'projects', title: 'Projetos' },
     { path: 'about', title: 'Sobre' },
   ],
 };

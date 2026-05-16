@@ -25,6 +25,8 @@ const titleMargins: Record<number, string> = {
         `${titleMargins[item.level] || 'mb-4'}`,
         'opacity-75',
         'hover:opacity-100',
+        'transition-opacity',
+        'duration-200',
       ]}>
         <a href={`#${item.id}`}>{item.text}</a>
       </li>
