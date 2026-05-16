@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import { type CollectionEntry,  render } from 'astro:content';
 import { getBlogPosts } from '@/utils/blog';
 import PostDate from '@/components/blog/PostDate.astro';
+import Toc from '@/components/layout/Toc.astro';
 import SiteBase from '@/layouts/SiteBase.astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -18,7 +19,9 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, remarkPluginFrontmatter } = await render(post);
+
+const toc = remarkPluginFrontmatter.toc || [];
 ---
 
 <SiteBase title={ post.data.title }>
@@ -29,6 +32,7 @@ const { Content } = await render(post);
         <PostDate pubDate={ post.data.pubDate } />
       </div>
     </div>
+    <Toc toc={ toc } />
     <article class="prose">
       <Content />
     </article>

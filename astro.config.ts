@@ -8,6 +8,7 @@ import astroExpressiveCode from 'astro-expressive-code';
 
 import remarkDirective from 'remark-directive';
 import rehypeTableProcessor from './src/plugins/rehype-table-processor';
+import remarkToc from './src/plugins/remark-toc';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -28,7 +29,7 @@ export default defineConfig({
     },
   }), icon(), sitemap()],
   markdown: {
-    remarkPlugins: [remarkDirective],
+    remarkPlugins: [remarkDirective, remarkToc],
     rehypePlugins: [rehypeTableProcessor],
   },
   vite: {

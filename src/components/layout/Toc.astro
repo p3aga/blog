@@ -1,0 +1,35 @@
+---
+interface Props {
+  toc: {
+    level: number
+    text: string
+    id: string
+  }[]
+}
+
+const { toc } = Astro.props
+
+const titleMargins: Record<number, string> = {
+  2: 'ms-0',
+  3: 'ms-4',
+  4: 'ms-8',
+}
+---
+
+<div id="toc" class="mb-15">
+  <hr class="opacity-30">
+  <ul class="ms-4 my-5 text-sm list-inside list-disc">
+  {
+    toc.map((item) => (
+      <li class:list={[
+        `${titleMargins[item.level] || 'mb-4'}`,
+        'opacity-75',
+        'hover:opacity-100',
+      ]}>
+        <a href={`#${item.id}`}>{item.text}</a>
+      </li>
+    ))
+  }
+  </ul>
+  <hr class="opacity-30">
+</div>
