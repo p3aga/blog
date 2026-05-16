@@ -1,10 +1,7 @@
-import { visit } from "unist-util-visit";
-
+import { visit } from 'unist-util-visit';
 
 function getText(node) {
-  return node.children
-    .map((child) => child.value ?? getText(child))
-    .join("");
+  return node.children.map((child) => child.value ?? getText(child)).join('');
 }
 
 function generateID(text, usedIDs) {
@@ -29,10 +26,10 @@ function generateID(text, usedIDs) {
 
 export default function remarkToc() {
   return (tree, file) => {
-    const toc: Array<{level: number, text: string, id: string}> = [];
+    const toc: Array<{ level: number; text: string; id: string }> = [];
     const usedIDs = new Set();
 
-    visit(tree, "heading", (node) => {
+    visit(tree, 'heading', (node) => {
       const level = node.depth;
 
       // only process h2,h3,h4
@@ -41,15 +38,15 @@ export default function remarkToc() {
       const text = getText(node);
       const id = generateID(text, usedIDs);
 
-      if (!node.data) node.data = {}
-      if (!node.data.hProperties) node.data.hProperties = {}
-      node.data.hProperties.id = id
+      if (!node.data) node.data = {};
+      if (!node.data.hProperties) node.data.hProperties = {};
+      node.data.hProperties.id = id;
 
-      toc.push({level, text, id});
+      toc.push({ level, text, id });
     });
 
-    if (!file.data.astro) file.data.astro = {}
-    if (!file.data.astro.frontmatter) file.data.astro.frontmatter = {}
+    if (!file.data.astro) file.data.astro = {};
+    if (!file.data.astro.frontmatter) file.data.astro.frontmatter = {};
     file.data.astro.frontmatter.toc = toc;
   };
 }

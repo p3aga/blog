@@ -17,17 +17,21 @@ export default defineConfig({
   site: 'https://p3aga.is-a.dev',
   base: '/',
   trailingSlash: 'ignore',
-  integrations: [astroExpressiveCode({
-    themes: ['gruvbox-dark-medium'],
-    styleOverrides: {
-      borderRadius: '4px',
-      uiFontFamily: 'var(--font-sans), sans-serif',
-      codeFontFamily: 'var(--font-mono), monospace',
-      frames: {
-        frameBoxShadowCssValue: 'none',
+  integrations: [
+    astroExpressiveCode({
+      themes: ['gruvbox-dark-medium'],
+      styleOverrides: {
+        borderRadius: '4px',
+        uiFontFamily: 'var(--font-sans), sans-serif',
+        codeFontFamily: 'var(--font-mono), monospace',
+        frames: {
+          frameBoxShadowCssValue: 'none',
+        },
       },
-    },
-  }), icon(), sitemap()],
+    }),
+    icon(),
+    sitemap(),
+  ],
   markdown: {
     remarkPlugins: [remarkDirective, remarkToc],
     rehypePlugins: [rehypeTableProcessor],

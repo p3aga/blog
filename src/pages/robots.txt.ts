@@ -1,5 +1,4 @@
-import type { APIRoute } from "astro";
-
+import type { APIRoute } from 'astro';
 
 const getRobotsTxt = (sitemapURL: URL) => `\
 User-agent: *

@@ -3,7 +3,7 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 export async function getBlogPosts() {
   let blogPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
   if (!import.meta.env.DEV) {
-    blogPosts = blogPosts.filter(post => !post.data.draft);
+    blogPosts = blogPosts.filter((post) => !post.data.draft);
   }
 
   return blogPosts;
