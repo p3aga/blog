@@ -1,13 +1,48 @@
 ---
-import NoData from '@/components/layout/NoData.astro';
+import { Icon } from 'astro-icon/components';
 import SiteBase from '@/layouts/SiteBase.astro';
+
+import siteConfig from '@/site.config';
 ---
 
 <SiteBase title="Sobre mim">
   <section class="text-base">
-    <h1 class="sr-only">Sobre mim</h1>
-    <div class="text-justify">
-      <NoData />
+    <h1 class="text-2xl font-bold">Sobre mim</h1>
+    <span class="text-sm opacity-50">Esse texto não é profissional...</span>
+    <div class="mt-5">
+      <p>
+        Pedro Henrick, nascido em 2002, natural de João Pessoa - Paraíba, programador, 
+        estudante, curioso e fascinado por tecnologia, open source, filosofia e toda e
+        qualquer assunto interessante que me aparecer.
+      </p>
+      <p class="mt-3">
+        Comecei meus primeiros estudos em programação no fim de 2019 e durante a pandemia,
+        me afundei totalmente no mundo de TI. Já trabalhei de suporte, trocando tonner
+        de impressora, crimpando cabos e resolvendo problemas apenas chegando na sala kkk.
+        Em 2021 eu consegui transferencia para o setor de desenvolvimento e desde então
+        não larguei esse osso.
+      </p>
+      <p class="mt-3">
+        Atualmente, atuo como analista de infraestrutura, implantando a cultura DevOps
+        e gerenciando servidores Linux. Sempre foco automizatizar tarefas, facilitando
+        a minha vida e de quem trabalha comigo, além de sempre dar preferência para
+        tecnologias open source, que aliás, é uma das minhas grandes paixões na TI.
+      </p>
+      <p class="mt-3">
+        Não espere de mim alguém com apenas um foco, como eu já disse, sou curioso, 
+        então sempre estou estudando coisas novas e talvez isso que me motive
+        a estar na área de tecnologia. Este blog é para isso, postar minhas experiências,
+        meus estudos e pensamentos, então seja bem vindo, espero que goste!
+      </p>
     </div>
+    <h2 class="text-lg font-bold mt-5 mb-2">Contatos</h2>
+    <ul class="list-disc list-inside">
+      {siteConfig.UserLinks.map((link) => (
+        <li>
+          <Icon name={`simple-icons:${link.icon}`} class="text-lg inline-block"/>  
+          <a href={link.url} target="_blank" class="underline">{link.alt}</a>
+        </li>
+      ))}
+    </ul>
   </section>
 </SiteBase>
