@@ -1,5 +1,4 @@
 ---
-import { type CollectionEntry } from 'astro:content';
 import type { GetStaticPaths, Page } from 'astro';
 import PostPreview from '@/components/blog/PostPreview.astro';
 import NoData from '@/components/layout/NoData.astro';
@@ -15,11 +14,9 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   });
 };
 
-interface Props {
-  page: Page<CollectionEntry<'blog'>>;
-}
+import type { BlogListPageProps } from '@/types/pages.types';
 
-const { page } = Astro.props;
+const { page } = Astro.props as unknown as BlogListPageProps;
 ---
 
 <SiteBase title={ `Blog pág ${page.currentPage}` }>

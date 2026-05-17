@@ -1,13 +1,7 @@
 ---
-interface Props {
-  toc: {
-    level: number;
-    text: string;
-    id: string;
-  }[];
-}
+import type { TocProps } from '@/types/components.types';
 
-const { toc } = Astro.props;
+const { toc } = Astro.props as TocProps;
 
 const titleMargins: Record<number, string> = {
   2: 'ms-0',

@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, render } from 'astro:content';
+import { render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import PostDate from '@/components/blog/PostDate.astro';
 import Toc from '@/components/layout/Toc.astro';
@@ -14,11 +14,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }));
 };
 
-interface Props {
-  post: CollectionEntry<'blog'>;
-}
+import type { BlogPostPageProps } from '@/types/pages.types';
 
-const { post } = Astro.props;
+const { post } = Astro.props as unknown as BlogPostPageProps;
 const { Content, remarkPluginFrontmatter } = await render(post);
 
 const toc = remarkPluginFrontmatter.toc || [];

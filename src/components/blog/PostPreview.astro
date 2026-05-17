@@ -1,12 +1,8 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import PostDate from '@/components/blog/PostDate.astro';
+import type { PostPreviewProps } from '@/types/components.types';
 
-interface Props {
-  post: CollectionEntry<'blog'>;
-}
-
-const { post } = Astro.props;
+const { post } = Astro.props as PostPreviewProps;
 ---
 
 <article class="@container/post-preview my-5">

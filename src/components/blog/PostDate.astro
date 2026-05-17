@@ -1,9 +1,7 @@
 ---
-interface Props {
-  pubDate: Date;
-}
+import type { PostDateProps } from '@/types/components.types';
 
-const { pubDate } = Astro.props;
+const { pubDate } = Astro.props as PostDateProps;
 ---
 
 <time
