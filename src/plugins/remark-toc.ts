@@ -1,10 +1,18 @@
+import type { Heading, PhrasingContent, Root } from 'mdast';
 import { visit } from 'unist-util-visit';
+import type { VFile } from 'vfile';
 
-function getText(node) {
-  return node.children.map((child) => child.value ?? getText(child)).join('');
+function getText(node: Heading | PhrasingContent): string {
+  if ('value' in node) return node.value;
+  if ('alt' in node && typeof node.alt === 'string') return node.alt;
+  if ('children' in node)
+    return node.children
+      .map((child: PhrasingContent) => getText(child))
+      .join('');
+  return '';
 }
 
-function generateID(text, usedIDs) {
+function generateID(text: string, usedIDs: Set<string>): string {
   const id = text
     .toLowerCase()
     .replace(/[^\u4e00-\u9fa5a-z0-9\s-]/g, '')
@@ -25,9 +33,9 @@ function generateID(text, usedIDs) {
 }
 
 export default function remarkToc() {
-  return (tree, file) => {
+  return (tree: Root, file: VFile) => {
     const toc: Array<{ level: number; text: string; id: string }> = [];
-    const usedIDs = new Set();
+    const usedIDs = new Set<string>();
 
     visit(tree, 'heading', (node) => {
       const level = node.depth;
