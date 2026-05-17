@@ -1,10 +1,10 @@
 ---
-import type { GetStaticPaths } from 'astro';
 import { type CollectionEntry, render } from 'astro:content';
-import { getBlogPosts } from '@/utils/blog';
+import type { GetStaticPaths } from 'astro';
 import PostDate from '@/components/blog/PostDate.astro';
 import Toc from '@/components/layout/Toc.astro';
 import SiteBase from '@/layouts/SiteBase.astro';
+import { getBlogPosts } from '@/utils/blog';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const blogPosts = await getBlogPosts();

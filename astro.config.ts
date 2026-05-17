@@ -1,16 +1,14 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import type { AstroUserConfig } from 'astro';
 
-import icon from 'astro-icon';
+import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import type { AstroUserConfig } from 'astro';
+import { defineConfig } from 'astro/config';
 import astroExpressiveCode from 'astro-expressive-code';
-
+import icon from 'astro-icon';
 import remarkDirective from 'remark-directive';
 import rehypeTableProcessor from './src/plugins/rehype-table-processor';
 import remarkToc from './src/plugins/remark-toc';
-
-import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
