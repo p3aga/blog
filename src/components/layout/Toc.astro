@@ -13,8 +13,8 @@ const titleMargins: Record<number, string> = {
 
 <div class="border border-green-50/30 rounded-lg cursor-pointer lg:cursor-default lg:border-0 lg:p-0 lg:absolute lg:w-50 lg:-right-55 lg:top-0">
   <div id="toc" class="flex py-5 px-2 lg:p-0">
-    <Icon name="material-symbols-light:arrow-drop-down-rounded" class="text-2xl mx-2 lg:hidden"/>
-    <Icon name="material-symbols-light:arrow-drop-up-rounded" class="text-2xl mx-2 hidden lg:hidden"/>
+    <Icon name="material-symbols-light:arrow-drop-down-rounded" class="arrow-down text-2xl mx-2 lg:hidden"/>
+    <Icon name="material-symbols-light:arrow-drop-up-rounded" class="arrow-up text-2xl mx-2 hidden lg:hidden"/>
     <h2 class="font-bold">Nesta página</h2>
   </div>
   <div
@@ -45,6 +45,8 @@ const titleMargins: Record<number, string> = {
 
 <script is:inline>
   const toc = document.getElementById('toc');
+  const arrowUp = toc.getElementsByClassName('arrow-up')[0];
+  const arrowDown = toc.getElementsByClassName('arrow-down')[0];
   const tocContent = document.getElementById('toc-content');
 
   const visibleToc = () => localStorage.getItem('visibleToc') || 0;
@@ -52,11 +54,17 @@ const titleMargins: Record<number, string> = {
   const showToc = () => {
     tocContent.classList.add('max-h-500!', 'ease-in');
     tocContent.classList.remove('ease-out');
+    arrowUp.classList.remove('hidden');
+    arrowDown.classList.add('hidden');
   }
 
   const hideToc = () => {
     tocContent.classList.remove('max-h-500!', 'ease-out');
     tocContent.classList.remove('ease-in');
+    tocContent.addEventListener('transitionend', () => {
+      arrowUp.classList.add('hidden');
+      arrowDown.classList.remove('hidden');
+    }, { once: true });
   }
 
   const toggleTOC = () => {
