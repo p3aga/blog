@@ -19,7 +19,7 @@ import type { BlogListPageProps } from '@/types/pages.types';
 const { page } = Astro.props as unknown as BlogListPageProps;
 ---
 
-<SiteBase title={ `Blog pág ${page.currentPage}` }>
+<SiteBase title="Blog">
   { page.data.length > 0 ? (
     <section class={ `${page.url.prev && 'mb-10'}` }>
       <h1 class="text-2xl font-bold">Posts</h1>
