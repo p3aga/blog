@@ -8,7 +8,7 @@ import type { BaseProps } from '@/types/layouts.types';
 const { title } = Astro.props as BaseProps;
 ---
 
-<html lang={siteConfig.Lang}>
+<html lang={siteConfig.Lang} class="scroll-smooth">
 	<head>
     <Head title={title} />
     <script is:inline>

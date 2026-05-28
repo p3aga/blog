@@ -1,31 +1,77 @@
 ---
+import { Icon } from 'astro-icon/components';
 import type { TocProps } from '@/types/components.types';
 
 const { toc } = Astro.props as TocProps;
 
 const titleMargins: Record<number, string> = {
   2: 'ms-0',
-  3: 'ms-4',
-  4: 'ms-8',
+  3: 'ms-2',
+  4: 'ms-4',
 };
 ---
 
-<div id="toc" class="mb-15">
-  <hr class="opacity-30">
-  <ul class="ms-4 my-5 text-sm list-inside list-disc">
-  {
-    toc.map((item) => (
-      <li class:list={[
-        `${titleMargins[item.level] || 'mb-4'}`,
-        'opacity-75',
-        'hover:opacity-100',
-        'transition-opacity',
-        'duration-200',
-      ]}>
-        <a href={`#${item.id}`}>{item.text}</a>
-      </li>
-    ))
-  }
-  </ul>
-  <hr class="opacity-30">
+<div class="border border-green-50/30 rounded-lg cursor-pointer lg:cursor-default lg:border-0 lg:p-0 lg:absolute lg:w-50 lg:-right-55 lg:top-0">
+  <div id="toc" class="flex py-5 px-2 lg:p-0">
+    <Icon name="material-symbols-light:arrow-drop-down-rounded" class="text-2xl mx-2 lg:hidden"/>
+    <Icon name="material-symbols-light:arrow-drop-up-rounded" class="text-2xl mx-2 hidden lg:hidden"/>
+    <h2 class="font-bold">Nesta página</h2>
+  </div>
+  <div
+    id="toc-content"
+    class="max-h-0 mx-5 overflow-hidden toc-content-hide lg:max-h-500 lg:mx-0"
+  >
+    <hr class="opacity-30 lg:hidden">
+    <ul class="mx-5 my-5 text-sm list-inside lg:block lg:ms-0">
+    {
+      toc.map((item) => (
+        <li class:list={[
+          `${titleMargins[item.level]}`,
+          'mb-1',
+          'opacity-75',
+          'hover:opacity-100',
+          'transition-opacity',
+          'duration-200',
+          'text-wrap',
+          'cursor-pointer'
+        ]}>
+          <a href={`#${item.id}`} class="w-full h-full inline-block">{item.text}</a>
+        </li>
+      ))
+    }
+    </ul>
+  </div>
 </div>
+
+<script is:inline>
+  const toc = document.getElementById('toc');
+  const tocContent = document.getElementById('toc-content');
+
+  const visibleToc = () => localStorage.getItem('visibleToc') || 0;
+
+  const showToc = () => {
+    tocContent.classList.add('max-h-500!', 'ease-in');
+    tocContent.classList.remove('ease-out');
+  }
+
+  const hideToc = () => {
+    tocContent.classList.remove('max-h-500!', 'ease-out');
+    tocContent.classList.remove('ease-in');
+  }
+
+  const toggleTOC = () => {
+    if (toc.classList.contains('absolute')) return;
+
+    if (visibleToc() == 1) {
+      hideToc();
+      localStorage.setItem('visibleToc', 0);
+    } else {
+      showToc();
+      localStorage.setItem('visibleToc', 1);
+    }
+  }
+
+  toc.addEventListener('click', toggleTOC);
+  (visibleToc() == 1) ? showToc() : hideToc();
+  tocContent.classList.add('transition-[max-height]', 'delay-0','duration-500')
+</script>
