@@ -21,14 +21,16 @@ const postsFiltered = allPostsByDate.slice(0, 5);
         reflexão e assuntos pessoais que estiver interessado. Mas caso esteja procurando apenas
         assuntos relacionados a TI, vá na aba <a href="/projects" class="underline">Projetos</a>.
       </p>
-      <p class="flex items-center gap-3 mt-4">
+      <div class="mt-4">
         <span>Você também pode me encontrar em:</span>
-        {siteConfig.UserLinks.map((link) => (
-          <a href={link.url} target="_blank" aria-label={link.alt}>
-            <Icon name={`simple-icons:${link.icon}`} class="text-lg"/>
-          </a>
-        ))}
-      </p>
+        <div class="flex items-center gap-3 mt-2 ms-2">
+          {siteConfig.UserLinks.map((link) => (
+            <a href={link.url} target="_blank" aria-label={link.alt}>
+              <Icon name={`simple-icons:${link.icon}`} class="text-lg"/>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
