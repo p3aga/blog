@@ -1,22 +1,24 @@
 ---
 import siteConfig from '@/site.config';
 import type { HeadProps } from '@/types/components.types';
+import { SEO } from 'astro-seo';
 
 const { title } = Astro.props as HeadProps;
-const titleFormatted = `${title} | ${siteConfig.SiteName}`;
 ---
 
-<meta charset="utf-8" />
+<SEO
+  title={title}
+  titleTemplate='%s - P3AGA'
+  titleDefault='P3AGA'
+  description={siteConfig.Description}
+  charset='UTF-8'
+/>
+
 <link rel="sitemap" href={`${import.meta.env.BASE_URL}sitemap-index.xml`}>
-<title>{titleFormatted}</title>
-<meta name="description" content={siteConfig.Description}>
+<meta name="google-site-verification" content="SAlvHmPXZse2elMazKWpNizsKNZbHxZR4tqL8Sq8jDg" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
-
-<meta name="google-site-verification" content="SAlvHmPXZse2elMazKWpNizsKNZbHxZR4tqL8Sq8jDg" />
-
-<meta name="og:site_name" content="P3aga">
 
 <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
 
