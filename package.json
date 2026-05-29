@@ -14,7 +14,7 @@
     "lint": "biome lint",
     "lint:write": "biome lint --write",
     "generate-types": "wrangler types",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.6.0",
