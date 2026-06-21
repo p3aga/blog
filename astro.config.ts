@@ -7,12 +7,14 @@ import { defineConfig } from 'astro/config';
 import astroExpressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
 import remarkDirective from 'remark-directive';
+import { unified } from '@astrojs/markdown-remark';
+
 import rehypeTableProcessor from './src/plugins/rehype-table-processor';
 import remarkToc from './src/plugins/remark-toc';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://p3aga.is-a.dev',
+  site: 'https://p3aga.dev.br',
   base: '/',
   trailingSlash: 'ignore',
   integrations: [
@@ -31,8 +33,10 @@ export default defineConfig({
     sitemap(),
   ],
   markdown: {
-    remarkPlugins: [remarkDirective, remarkToc],
-    rehypePlugins: [rehypeTableProcessor],
+    processor: unified({
+      remarkPlugins: [remarkDirective, remarkToc],
+      rehypePlugins: [rehypeTableProcessor],
+    }),
   },
   vite: {
     plugins: [tailwindcss()],
