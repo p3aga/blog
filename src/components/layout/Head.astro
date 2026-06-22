@@ -3,13 +3,14 @@ import siteConfig from '@/site.config';
 import type { HeadProps } from '@/types/components.types';
 import { SEO } from 'astro-seo';
 
-const { title } = Astro.props as HeadProps;
+const { title, canonicalUrl } = Astro.props as HeadProps;
 ---
 
 <SEO
   title={title}
   titleTemplate='%s - P3AGA'
   titleDefault='P3AGA'
+  canonical={canonicalUrl?.href}
   description={siteConfig.Description}
   charset='UTF-8'
 />

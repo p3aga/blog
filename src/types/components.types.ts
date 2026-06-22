@@ -16,6 +16,7 @@ export interface PostDateProps {
 
 export interface HeadProps {
   title: string;
+  canonicalUrl?: URL;
 }
 
 export interface TocProps {

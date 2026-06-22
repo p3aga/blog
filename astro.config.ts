@@ -30,7 +30,9 @@ export default defineConfig({
       },
     }),
     icon(),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('/page/'),
+    }),
   ],
   markdown: {
     processor: unified({

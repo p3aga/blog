@@ -5,12 +5,13 @@ import siteConfig from '@/site.config';
 import '@/styles/global.css';
 import type { BaseProps } from '@/types/layouts.types';
 
-const { title } = Astro.props as BaseProps;
+const { title, canonicalUrl } = Astro.props as BaseProps;
 ---
 
 <html lang={siteConfig.Lang} class="scroll-smooth">
 	<head>
-    <Head title={title} />
+    <Head title={title} canonicalUrl={canonicalUrl} />
+    <slot name="head" />
     <script is:inline>
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
       
