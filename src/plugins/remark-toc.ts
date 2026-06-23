@@ -1,4 +1,4 @@
-import type { Heading, PhrasingContent, Root } from 'mdast';
+import type { Heading, HeadingData, PhrasingContent, Root } from 'mdast';
 import { visit } from 'unist-util-visit';
 import type { VFile } from 'vfile';
 
@@ -47,8 +47,9 @@ export default function remarkToc() {
       const id = generateID(text, usedIDs);
 
       if (!node.data) node.data = {};
-      if (!node.data.hProperties) node.data.hProperties = {};
-      node.data.hProperties.id = id;
+      const data = node.data as HeadingData & { hProperties?: Record<string, unknown> };
+      if (!data.hProperties) data.hProperties = {};
+      data.hProperties.id = id;
 
       toc.push({ level, text, id });
     });
