@@ -47,7 +47,9 @@ export default function remarkToc() {
       const id = generateID(text, usedIDs);
 
       if (!node.data) node.data = {};
-      const data = node.data as HeadingData & { hProperties?: Record<string, unknown> };
+      const data = node.data as HeadingData & {
+        hProperties?: Record<string, unknown>;
+      };
       if (!data.hProperties) data.hProperties = {};
       data.hProperties.id = id;
 

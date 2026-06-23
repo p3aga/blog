@@ -1,5 +1,6 @@
 // @ts-check
 
+import { unified } from '@astrojs/markdown-remark';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import type { AstroUserConfig } from 'astro';
@@ -7,7 +8,6 @@ import { defineConfig } from 'astro/config';
 import astroExpressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
 import remarkDirective from 'remark-directive';
-import { unified } from '@astrojs/markdown-remark';
 
 import rehypeTableProcessor from './src/plugins/rehype-table-processor';
 import remarkToc from './src/plugins/remark-toc';
