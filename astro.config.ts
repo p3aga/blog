@@ -31,7 +31,9 @@ export default defineConfig({
     }),
     icon(),
     sitemap({
-      filter: (page) => !page.includes('/page/'),
+      filter: (page) => {
+        return !page.includes('/page/') && !page.includes('/tags/')
+      }
     }),
   ],
   markdown: {
