@@ -7,11 +7,11 @@ const { toc } = Astro.props as TocProps;
 const titleMargins: Record<number, string> = {
   2: 'ms-0',
   3: 'ms-2',
-  4: 'ms-4',
+  4: 'ms-6',
 };
 ---
 
-<div class="border border-green-50/30 rounded-lg cursor-pointer lg:cursor-default lg:border-0 lg:p-0 lg:absolute lg:w-50 lg:-right-55 lg:top-0">
+<div class="border border-green-50/30 rounded-lg cursor-pointer lg:cursor-default lg:border-0 lg:p-0 lg:absolute lg:w-50 lg:-right-55 lg:top-0 xl:w-60">
   <div id="toc" class="flex py-5 px-2 lg:p-0">
     <Icon name="material-symbols-light:arrow-drop-down-rounded" class="arrow-down text-2xl mx-2 lg:hidden"/>
     <Icon name="material-symbols-light:arrow-drop-up-rounded" class="arrow-up text-2xl mx-2 hidden lg:hidden"/>
@@ -33,9 +33,11 @@ const titleMargins: Record<number, string> = {
           'transition-opacity',
           'duration-200',
           'text-wrap',
-          'cursor-pointer'
+          'cursor-pointer',
+          'font-serif',
+          'italic'
         ]}>
-          <a href={`#${item.id}`} class="w-full h-full inline-block">{item.text}</a>
+          <a href={`#${item.id}`} class="w-full h-full inline-block">{'#'.repeat(item.level - 1)} {item.text}</a>
         </li>
       ))
     }

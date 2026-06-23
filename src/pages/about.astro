@@ -38,9 +38,9 @@ import siteConfig from '@/site.config';
     <h2 class="text-lg font-bold mt-5 mb-2">Contatos</h2>
     <ul class="list-disc list-inside">
       {siteConfig.UserLinks.map((link) => (
-        <li>
+        <li class="mb-2">
           <Icon name={`simple-icons:${link.icon}`} class="text-lg inline-block"/>  
-          <a href={link.url} target="_blank" class="underline">{link.alt}</a>
+          <a href={link.url} target="_blank" class="underline underline-offset-4">{link.alt}</a>
         </li>
       ))}
     </ul>

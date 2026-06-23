@@ -7,7 +7,7 @@ export interface linkCardMetadataProps {
 }
 
 export interface PostPreviewProps {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<'blog'> | CollectionEntry<'projects'>;
 }
 
 export interface PostDateProps {
@@ -24,5 +24,12 @@ export interface TocProps {
     level: number;
     text: string;
     id: string;
+  }[];
+}
+
+export interface MoreTagsProps {
+  tags: {
+    name: string;
+    postCount: number;
   }[];
 }

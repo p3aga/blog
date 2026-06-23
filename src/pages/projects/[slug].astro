@@ -4,26 +4,26 @@ import type { GetStaticPaths } from 'astro';
 import PostDate from '@/components/post/PostDate.astro';
 import Toc from '@/components/post/Toc.astro';
 import SiteBase from '@/layouts/SiteBase.astro';
-import { getBlogPosts } from '@/utils/blog';
+import { getProjectPosts } from '@/utils/projects';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const blogPosts = await getBlogPosts();
-  return blogPosts.map((post) => ({
+  const projectPosts = await getProjectPosts();
+  return projectPosts.map((post) => ({
     params: { slug: post.id },
     props: { post },
   }));
 };
 
-import type { BlogPostPageProps } from '@/types/pages.types';
+import type { ProjectsPostPageProps } from '@/types/pages.types';
 
-const { post } = Astro.props as unknown as BlogPostPageProps;
+const { post } = Astro.props as unknown as ProjectsPostPageProps;
 const { Content, remarkPluginFrontmatter } = await render(post);
 
 const toc = remarkPluginFrontmatter.toc || [];
 ---
 
 <SiteBase title={ post.data.title }>
-  <section id="blog-content" class="relative">
+  <section data-pagefind-body class="relative">
     <div class="mb-10">
       <h1 class="text-2xl font-serif font-bold mb-2">{ post.data.title }</h1>
       <div class="text-xs">

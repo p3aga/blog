@@ -1,12 +1,14 @@
 ---
-import PostDate from '@/components/blog/PostDate.astro';
+import PostDate from '@/components/post/PostDate.astro';
 import type { PostPreviewProps } from '@/types/components.types';
 
 const { post } = Astro.props as PostPreviewProps;
+
+const tags = post.collection === 'blog' ? post.data.tags : undefined;
 ---
 
 <article class="@container/post-preview my-5">
-  <a href={`${import.meta.env.BASE_URL}blog/${post.id}`} class="transition-opacity duration-200 hover:opacity-80">
+  <a href={`${import.meta.env.BASE_URL}${post.collection}/${post.id}`} class="transition-opacity duration-200 hover:opacity-80">
     <div class="@md/post-preview:flex @md/post-preview:items-center @md/post-preview:gap-4">
       <h3 class="text-base font-semibold whitespace-nowrap text-ellipsis overflow-hidden">
         { post.data.title } {post.data.draft && "(Rascunho)"}
@@ -19,15 +21,21 @@ const { post } = Astro.props as PostPreviewProps;
     <div class="text-sm font-medium opacity-50">
       <em>{ post.data.description }</em>
     </div>
-    <div class="whitespace-nowrap text-ellipsis overflow-hidden">
-      <div class="hidden me-1 after:content-['-'] after:opacity-50 @max-md/post-preview:inline">
-        <PostDate pubDate={ post.data.pubDate } />
-      </div>
-      {
-        post.data.tags.map(tag => (
-          <span class="text-sm me-1 font-medium inline">#{ tag }</span>
-        ))
-      }
-    </div>
   </a>
+  <div class="whitespace-nowrap text-ellipsis overflow-hidden">
+    <div class:list={[
+      "hidden",
+      "me-1",
+      `${tags ? "after:content-['-']" : ""}`,
+      "after:opacity-50",
+      "@max-md/post-preview:inline"
+    ]}>
+      <PostDate pubDate={ post.data.pubDate } />
+    </div>
+    {tags && (
+      tags.map(tag => (
+        <a href={`/tags/${tag}`} class="font-serif italic text-sm me-1 font-medium inline">#{ tag }</a>
+      ))
+    )}
+  </div>
 </article>

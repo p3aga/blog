@@ -1,0 +1,31 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { MoreTagsProps } from '@/types/components.types';
+
+const { tags } = Astro.props as unknown as MoreTagsProps;
+---
+<div class="lg:cursor-default lg:border-0 lg:p-0 lg:absolute lg:w-50 lg:-right-55 lg:top-0">
+  <div class="pb-5">
+    <h2 class="text-xl font-bold lg:text-base">Principais tags</h2>
+  </div>
+  <div>
+    <ul>
+      {tags.map(tag => ( 
+        <li class="mb-1">
+          <a href={`${import.meta.env.BASE_URL}tags/${tag.name}/`}>
+            <b class="font-serif italic font-semibold">#{tag.name}</b>
+            <span class="opacity-50 text-xs">{tag.postCount} posts</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="pt-2">
+    <a
+      href={`${import.meta.env.BASE_URL}tags/`}
+      class="font-serif text-sm font-base italic"
+    >
+      Ver todas as tags <Icon name="material-symbols-light:arrow-right-alt" class="inline-block" />
+    </a>
+  </div>
+</div>
